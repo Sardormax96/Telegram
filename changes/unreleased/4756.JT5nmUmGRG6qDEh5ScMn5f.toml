@@ -1,0 +1,17 @@
+features = "Full Support for Bot API 9.0"
+[[pull_requests]]
+uid = "4756"
+author_uid = "Bibo-Joshi"
+closes_threads = ["4754"]
+[[pull_requests]]
+uid = "4757"
+author_uid = "Bibo-Joshi"
+closes_threads = []
+[[pull_requests]]
+uid = "4759"
+author_uid = "Bibo-Joshi"
+closes_threads = []
+[[pull_requests]]
+uid = "4763"
+author_uid = "aelkheir"
+closes_threads = []

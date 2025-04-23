@@ -46,6 +46,7 @@ __all__ = [
     "BotDescriptionLimit",
     "BotNameLimit",
     "BulkRequestLimit",
+    "BusinessLimit",
     "CallbackQueryLimit",
     "ChatAction",
     "ChatBoostSources",
@@ -85,6 +86,7 @@ __all__ = [
     "MessageLimit",
     "MessageOriginType",
     "MessageType",
+    "OwnedGiftType",
     "PaidMediaType",
     "ParseMode",
     "PollLimit",
@@ -102,6 +104,7 @@ __all__ = [
     "StickerSetLimit",
     "StickerType",
     "TransactionPartnerType",
+    "UniqueGiftInfoOrigin",
     "UpdateType",
     "UserProfilePhotosLimit",
     "VerifyLimit",
@@ -155,7 +158,7 @@ class _AccentColor(NamedTuple):
 #: :data:`telegram.__bot_api_version_info__`.
 #:
 #: .. versionadded:: 20.0
-BOT_API_VERSION_INFO: Final[_BotAPIVersion] = _BotAPIVersion(major=8, minor=3)
+BOT_API_VERSION_INFO: Final[_BotAPIVersion] = _BotAPIVersion(major=9, minor=0)
 #: :obj:`str`: Telegram Bot API
 #: version supported by this version of `python-telegram-bot`. Also available as
 #: :data:`telegram.__bot_api_version__`.
@@ -700,6 +703,53 @@ class BulkRequestLimit(IntEnum):
     """:obj:`int`: Minimum number of messages required for bulk actions."""
     MAX_LIMIT = 100
     """:obj:`int`: Maximum number of messages required for bulk actions."""
+
+
+class BusinessLimit(IntEnum):
+    """This enum contains limitations related to handling business accounts. The enum members
+    of this enumeration are instances of :class:`int` and can be treated as such.
+
+    .. versionadded:: NEXT.VERSION
+    """
+
+    __slots__ = ()
+
+    CHAT_ACTIVITY_TIMEOUT = int(dtm.timedelta(hours=24).total_seconds())
+    """:obj:`int`: Time in seconds in which the chat must have been active for. Relevant for
+    :paramref:`~telegram.Bot.read_business_message.chat_id`
+    of :meth:`~telegram.Bot.read_business_message` and
+    :paramref:`~telegram.Bot.transfer_gift.new_owner_chat_id`
+    of :meth:`~telegram.Bot.transfer_gift`.
+    """
+    MIN_NAME_LENGTH = 1
+    """:obj:`int`: Minimum length of the name of a business account. Relevant only for
+    :paramref:`~telegram.Bot.set_business_account_name.first_name` of
+    :meth:`telegram.Bot.set_business_account_name`.
+    """
+    MAX_NAME_LENGTH = 64
+    """:obj:`int`: Maximum length of the name of a business account. Relevant for the parameters
+    of :meth:`telegram.Bot.set_business_account_name`.
+    """
+    MAX_USERNAME_LENGTH = 32
+    """::obj:`int`: Maximum length of the username of a business account. Relevant for
+    :paramref:`~telegram.Bot.set_business_account_username.username` of
+    :meth:`telegram.Bot.set_business_account_username`.
+    """
+    MAX_BIO_LENGTH = 140
+    """:obj:`int`: Maximum length of the bio of a business account. Relevant for
+    :paramref:`~telegram.Bot.set_business_account_bio.bio` of
+    :meth:`telegram.Bot.set_business_account_bio`.
+    """
+    MIN_GIFT_RESULTS = 1
+    """:obj:`int`: Minimum number of gifts to be returned. Relevant for
+    :paramref:`~telegram.Bot.get_business_account_gifts.limit` of
+    :meth:`telegram.Bot.get_business_account_gifts`.
+    """
+    MAX_GIFT_RESULTS = 100
+    """:obj:`int`: Maximum number of gifts to be returned. Relevant for
+    :paramref:`~telegram.Bot.get_business_account_gifts.limit` of
+    :meth:`telegram.Bot.get_business_account_gifts`.
+    """
 
 
 class CallbackQueryLimit(IntEnum):
@@ -1949,6 +1999,11 @@ class MessageType(StringEnum):
 
     .. versionadded:: 20.8
     """
+    GIFT = "gift"
+    """:obj:`str`: Messages with :attr:`telegram.Message.gift`.
+
+    .. versionadded:: NEXT.VERSION
+    """
     GIVEAWAY = "giveaway"
     """:obj:`str`: Messages with :attr:`telegram.Message.giveaway`.
 
@@ -2032,6 +2087,11 @@ class MessageType(StringEnum):
     """:obj:`str`: Messages with :attr:`telegram.Message.successful_payment`."""
     TEXT = "text"
     """:obj:`str`: Messages with :attr:`telegram.Message.text`."""
+    UNIQUE_GIFT = "unique_gift"
+    """:obj:`str`: Messages with :attr:`telegram.Message.unique_gift`.
+
+    .. versionadded:: NEXT.VERSION
+    """
     USERS_SHARED = "users_shared"
     """:obj:`str`: Messages with :attr:`telegram.Message.users_shared`.
 
@@ -2063,6 +2123,21 @@ class MessageType(StringEnum):
 
     .. versionadded:: 20.8
     """
+
+
+class OwnedGiftType(StringEnum):
+    """This enum contains the available types of :class:`telegram.OwnedGift`. The enum
+    members of this enumeration are instances of :class:`str` and can be treated as such.
+
+    .. versionadded:: NEXT.VERSION
+    """
+
+    __slots__ = ()
+
+    REGULAR = "regular"
+    """:obj:`str`: a regular owned gift."""
+    UNIQUE = "unique"
+    """:obj:`str`: a unique owned gift."""
 
 
 class PaidMediaType(StringEnum):
@@ -2773,6 +2848,21 @@ class PollType(StringEnum):
     """:obj:`str`: regular polls."""
     QUIZ = "quiz"
     """:obj:`str`: quiz polls."""
+
+
+class UniqueGiftInfoOrigin(StringEnum):
+    """This enum contains the available origins for :class:`telegram.UniqueGiftInfo`. The enum
+    members of this enumeration are instances of :class:`str` and can be treated as such.
+
+    .. versionadded:: NEXT.VERSION
+    """
+
+    __slots__ = ()
+
+    UPGRADE = "upgrade"
+    """:obj:`str` gift upgraded"""
+    TRANSFER = "transfer"
+    """:obj:`str` gift transfered"""
 
 
 class UpdateType(StringEnum):

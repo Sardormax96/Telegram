@@ -161,8 +161,6 @@
       - Used for unpinning a message
     * - :meth:`~telegram.Bot.unpin_all_chat_messages`
       - Used for unpinning all pinned chat messages
-    * - :meth:`~telegram.Bot.get_business_connection`
-      - Used for getting information about the business account.
     * - :meth:`~telegram.Bot.get_user_profile_photos`
       - Used for obtaining user's profile pictures
     * - :meth:`~telegram.Bot.get_chat`
@@ -396,6 +394,44 @@
       - Used for obtaining the bot's Telegram Stars transactions
     * - :meth:`~telegram.Bot.refund_star_payment`
       - Used for refunding a payment in Telegram Stars
+
+.. raw:: html
+
+   </details>
+   <br>
+
+.. raw:: html
+
+   <details>
+   <summary>Business Related Methods</summary>
+
+.. list-table::
+    :align: left
+    :widths: 1 4
+
+    * - :meth:`~telegram.Bot.get_business_connection`
+      - Used for getting information about the business account.
+    * - :meth:`~telegram.Bot.get_business_account_gifts`
+      - Used for getting gifts owned by the business account.
+    * - :meth:`~telegram.Bot.read_business_message`
+      - Used for marking a message as read.
+    * - :meth:`~telegram.Bot.delete_business_messages`
+      - Used for deleting business messages.
+    * - :meth:`~telegram.Bot.set_business_account_name`
+      - Used for setting the business account name.
+    * - :meth:`~telegram.Bot.set_business_account_username`
+      - Used for setting the business account username.
+    * - :meth:`~telegram.Bot.set_business_account_bio`
+      - Used for setting the business account bio.
+    * - :meth:`~telegram.Bot.set_business_account_gift_settings`
+      - Used for setting the business account gift settings.
+    * - :meth:`~telegram.Bot.convert_gift_to_stars`
+      - Used for converting owned reqular gifts to stars.
+    * - :meth:`~telegram.Bot.upgrade_gift`
+      - Used for upgrading owned regular gifts to unique ones.
+    * - :meth:`~telegram.Bot.transfer_gift`
+      - Used for transferring owned unique gifts to another user.
+
 
 .. raw:: html
 

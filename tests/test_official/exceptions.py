@@ -144,11 +144,16 @@ PTB_EXTRA_PARAMS = {
     "ReactionType": {"type"},  # attributes common to all subclasses
     "BackgroundType": {"type"},  # attributes common to all subclasses
     "BackgroundFill": {"type"},  # attributes common to all subclasses
+    "OwnedGift": {"type"},  # attributes common to all subclasses
     "InputTextMessageContent": {"disable_web_page_preview"},  # convenience arg, here for bw compat
     "RevenueWithdrawalState": {"type"},  # attributes common to all subclasses
     "TransactionPartner": {"type"},  # attributes common to all subclasses
     "PaidMedia": {"type"},  # attributes common to all subclasses
     "InputPaidMedia": {"type", "media"},  # attributes common to all subclasses
+    # backwards compatibility for api 9.0 changes
+    # tags: deprecated NEXT.VERSION, bot api 9.0
+    "BusinessConnection": {"can_reply"},
+    "ChatFullInfo": {"can_send_gift"},
 }
 
 
@@ -177,6 +182,7 @@ PTB_IGNORED_PARAMS = {
     r"TransactionPartner\w+": {"type"},
     r"PaidMedia\w+": {"type"},
     r"InputPaidMedia\w+": {"type"},
+    r"OwnedGift\w+": {"type"},
 }
 
 
@@ -192,6 +198,10 @@ IGNORED_PARAM_REQUIREMENTS = {
     "send_venue": {"latitude", "longitude", "title", "address"},
     "send_contact": {"phone_number", "first_name"},
     # ---->
+    # backwards compatibility for api 9.0 changes
+    # tags: deprecated NEXT.VERSION, bot api 9.0
+    "BusinessConnection": {"is_enabled"},
+    "ChatFullInfo": {"accepted_gift_types"},
 }
 
 
